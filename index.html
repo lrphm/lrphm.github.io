@@ -1,205 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>ATN</title>
-    <style>
-      body {
-          padding: 0;
-          margin: 0;
-      }
-      html, body, #map{
-          height: 100vh;
-          width: 100%;
-      }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Laura Pham</title>
+</head>
 
-      </style>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
 
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-    crossorigin=""></script>
+<script src="//unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
 
-  
-  </head>
-  <body>
-    <div id="map"></div>
-    
-  <script>
-var redIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-  iconSize: [10, 16],
-  iconAnchor: [10, 16],
-});
-var myMap = L.map('map').setView([0,0], 2);
+<script type='text/javascript'>
+  var publicSpreadsheetUrl =
+    'https://docs.google.com/spreadsheets/d/1CtxXhLKZvm3czV1zh_A6UKescFI3U9OfLFsZ3kWAcqo/edit?usp=sharing';
 
-myMap.setMaxBounds(myMap.getBounds());
+  function init() {
+    Tabletop.init({
+      key: publicSpreadsheetUrl,
+      // callback: showInfo,
+       callback: addPoints,
+      simpleSheet: true
+    })
+  }
 
-L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw", {
-  // show only one world map
-  noWrap: true,
-   minZoom: 2,
-attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' + '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' + 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-id: "mapbox.streets"
-}).addTo(myMap);
+  function showInfo(data, tabletop) {
+    alert('Successfully processed!')
+    console.log(data);
+    console.log(data[0].latitude, data[0].longitude);
+  }
 
-// markers for all the locations
-L.marker([-27.3604,152.9729], {icon: redIcon}).addTo(myMap);
-L.marker([50.580883, -126.920289], {icon: redIcon}).addTo(myMap);
-L.marker([-27.5234,153.2142], {icon: redIcon}).addTo(myMap);
-L.marker([-27.4476,152.9774], {icon: redIcon}).addTo(myMap);
-L.marker([-27.3569,153.0245], {icon: redIcon}).addTo(myMap);
-L.marker([-27.597663, 153.042928], {icon: redIcon}).addTo(myMap);
-L.marker([-27.414019,153.063723], {icon: redIcon}).addTo(myMap);
-L.marker([- 27.4560,153.0731], {icon: redIcon}).addTo(myMap);
+  window.addEventListener('DOMContentLoaded', init)
+</script>
+
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  html,
+  body,
+  #map {
+    height: 100vh;
+    width: 100%;
+  }
+
+  #map {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
+<body>
+
+  <div id="map"></div>
+</body>
 
 
-L.marker([- 27.7142, 153.2052], {icon: redIcon}).addTo(myMap);
-L.marker([-19.250743, 146.792886], {icon: redIcon}).addTo(myMap);
-L.marker([- 27.5025, 153.1139], {icon: redIcon}).addTo(myMap);
-L.marker([- 28.0071, 153.3918], {icon: redIcon}).addTo(myMap);
-L.marker([-20.009742, 148.243468], {icon: redIcon}).addTo(myMap);
-L.marker([- 27.2999, 152.9620], {icon: redIcon}).addTo(myMap);
-L.marker([-27.6329,152.7544], {icon: redIcon}).addTo(myMap);
-L.marker([-27.4625,153.1505], {icon: redIcon}).addTo(myMap);
-L.marker([-27.4857,153.0533], {icon: redIcon}).addTo(myMap);
-L.marker([-27.4796, 153.0189], {icon: redIcon}).addTo(myMap);
-L.marker([-27.431962, 153.004095], {icon: redIcon}).addTo(myMap);
-L.marker([-27.669738, 153.053871], {icon: redIcon}).addTo(myMap);
-L.marker([-21.030643, 149.156515], {icon: redIcon}).addTo(myMap);
-L.marker([-27.374050, 152.969705], {icon: redIcon}).addTo(myMap);
-L.marker([- 27.1713, 152.9768], {icon: redIcon}).addTo(myMap);
-L.marker([- 27.0830, 152.9485], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.516552, 153.072888], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.578639,151.965422], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.4705,153.0243], {icon: redIcon}).addTo(myMap);
-L.marker([-22.636196, 149.252422], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.5309,153.2609], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.9340, 151.9167], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.248616, 153.085570], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.9231,153.3775], {icon: redIcon}).addTo(myMap);
+<script>
+  var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    iconSize: [10, 16],
+    iconAnchor: [10, 16],
+  });
 
-L.marker([-19.307544, 146.754920], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.1782,151.2589], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5707, 152.9537], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.1911, 153.0303], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6736, 152.7497], {icon: redIcon}).addTo(myMap);
-L.marker([49.086179, -123.064801], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.8075,152.9554], {icon: redIcon}).addTo(myMap);
-L.marker([50.697002,-127.423241], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.1866,152.6787], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.1878, 152.6792], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.4327,153.0743], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.573059,151.932555], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.8958,153.3271], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.9157,153.3293], {icon: redIcon}).addTo(myMap);
-L.marker([-19.279396, 146.796704], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.4476, 151.9510], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5141,153.0617], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5007,152.9853], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5007, 152.9853], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.1753,152.6567], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.415067, 153.039536], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.508127, 152.929360], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.2630, 152.8717], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.665622,153.110345], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.6370,152.4044], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.567775,152.277664], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6724,153.1430], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6391, 153.1290], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6442, 153.1270], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5713,153.0671], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5460, 153.1247], {icon: redIcon}).addTo(myMap);
-L.marker([34.0083, -118.29217], {icon: redIcon}).addTo(myMap);
-L.marker([-27.684499, 153.110506], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.4838,153.0921], {icon: redIcon}).addTo(myMap);
-L.marker([34.0318, -118.4770], {icon: redIcon}).addTo(myMap);
-L.marker([ -28.0401,153.4181], {icon: redIcon}).addTo(myMap);
-L.marker([ -28.062289, 153.438830], {icon: redIcon}).addTo(myMap);
-L.marker([33.8733,-118.3899], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.4119,152.9661], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.4414,153.1630], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.535409, 153.073634], {icon: redIcon}).addTo(myMap);
-L.marker([-20.723260, 139.491853], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.687495,153.103894], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.3075,153.0502], {icon: redIcon}).addTo(myMap);
+  var myMap = L.map('map').setView([0, 0], 2);
 
-L.marker([ -27.4321,153.0041], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.4249,152.9101], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.4070, 153.1010], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.3176,153.0254], {icon: redIcon}).addTo(myMap);
-L.marker([ -33.7966, 151.2546], {icon: redIcon}).addTo(myMap);
-L.marker([ -10.8958, 142.3863], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.3981,153.0710], {icon: redIcon}).addTo(myMap);
-L.marker([34.0068, -118.4772], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.8012, 153.2766], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.7710,153.2641], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.9006, 153.3039], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5630,152.9802], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.9418,153.3208], {icon: redIcon}).addTo(myMap);
-L.marker([ -28.131656, 153.474268], {icon: redIcon}).addTo(myMap);
-L.marker([33.1504,-117.1827], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.7007,153.0349], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.3923, 152.9341], {icon: redIcon}).addTo(myMap);
-L.marker([34.0414, -118.7096], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5260,152.8883], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.6520,152.8691], {icon: redIcon}).addTo(myMap);
-L.marker([-27.223490, 153.111488], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5651, 153.0557], {icon: redIcon}).addTo(myMap);
-L.marker([-27.490945, 153.090703], {icon: redIcon}).addTo(myMap);
-L.marker([34.0121,-118.4869], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6627,153.1876], {icon: redIcon}).addTo(myMap);
-L.marker([49.2768,-122.9180], {icon: redIcon}).addTo(myMap);
-L.marker([-27.686444, 152.891262], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6907,152.9092], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6967,152.9075], {icon: redIcon}).addTo(myMap);
-L.marker([-27.611132, 153.137742], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6393,153.0561], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5765, 153.0584], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5758, 153.0514], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.4099, 153.1004], {icon: redIcon}).addTo(myMap);
+  myMap.setMaxBounds(myMap.getBounds());
 
-L.marker([ -10.5818,142.2206], {icon: redIcon}).addTo(myMap);
-L.marker([ -23.1551, 150.7556], {icon: redIcon}).addTo(myMap);
-L.marker([ -28.8506,151.1748], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.4450, 152.9505], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.441030, 152.944460], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5898,152.7449], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.1042,152.3887], {icon: redIcon}).addTo(myMap);
-L.marker([ 34.0689, -118.4452], {icon: redIcon}).addTo(myMap);
-L.marker([ -25.2969, 152.8772], {icon: redIcon}).addTo(myMap);
 
-L.marker([49.261612,-123.051648], {icon: redIcon}).addTo(myMap);
-L.marker([-28.087876, 153.410233], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5943, 153.2854], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5868,153.0854], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.398008, 153.037662], {icon: redIcon}).addTo(myMap);
-L.marker([49.336480, -123.160860], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.7397,153.1887], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6574,152.9210], {icon: redIcon}).addTo(myMap);
-L.marker([ - 26.9608,152.7800], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.6426,153.0988], {icon: redIcon}).addTo(myMap);
-L.marker([ -26.6680,152.9740], {icon: redIcon}).addTo(myMap);
-L.marker([ - 27.4540,153.1765], {icon: redIcon}).addTo(myMap);
-L.marker([ -27.5171,153.0228], {icon: redIcon}).addTo(myMap);
-L.marker([-28.073169, 153.416584], {icon: redIcon}).addTo(myMap);
-L.marker([-19.999137, 148.234152], {icon: redIcon}).addTo(myMap);
-L.marker([-27.494238, 153.060325], {icon: redIcon}).addTo(myMap);
-L.marker([-27.406895, 152.933983], {icon: redIcon}).addTo(myMap);
-L.marker([-21.152484, 149.162144], {icon: redIcon}).addTo(myMap);
-L.marker([-26.765344, 152.857943], {icon: redIcon}).addTo(myMap);
-L.marker([-33.8886, 151.1873], {icon: redIcon}).addTo(myMap);
-L.marker([-27.562619, 153.261784], {icon: redIcon}).addTo(myMap);
-L.marker([-27.406885, 152.933940], {icon: redIcon}).addTo(myMap);
-L.marker([-27.256593, 153.024342], {icon: redIcon}).addTo(myMap);
-L.marker([-26.765378, 152.857901], {icon: redIcon}).addTo(myMap);
-L.marker([-27.172594, 152.941183], {icon: redIcon}).addTo(myMap);
- </script>
-  </body>
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
+      // show only one world map
+      noWrap: true,
+      minZoom: 2,
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      id: "mapbox.streets"
+    }).addTo(myMap);
+
+  function addPoints(data, tabletop) {
+
+    // L.marker([data[0].latitude, data[0].longitude], {
+    //   icon: redIcon }).addTo(myMap);
+
+    for (var row in data) {
+      var marker = L.marker([
+        data[row].latitude,
+        data[row].longitude],  {
+      icon: redIcon }).addTo(myMap);
+      marker.bindPopup('<strong>' + data[row].school + '</strong>');
+    }
+  }
+</script>
 
 </html>
