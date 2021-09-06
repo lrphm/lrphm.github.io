@@ -11,7 +11,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-<!-- 
+
 <script type='text/javascript'>
   var publicSpreadsheetUrl =
     'https://docs.google.com/spreadsheets/d/1CtxXhLKZvm3czV1zh_A6UKescFI3U9OfLFsZ3kWAcqo/edit?usp=sharing';
@@ -19,7 +19,6 @@
   function init() {
     Tabletop.init({
       key: publicSpreadsheetUrl,
-      // callback: showInfo,
        callback: addPoints,
       simpleSheet: true
     })
@@ -32,7 +31,7 @@
   }
 
   window.addEventListener('DOMContentLoaded', init)
-</script> -->
+</script>
 
 <style>
   body {
@@ -72,8 +71,8 @@
   myMap.setMaxBounds(myMap.getBounds());
 
 
-  L.marker([-27.3604,152.9729], {icon: redIcon}).addTo(myMap);
-  
+  // L.marker([-27.3604,152.9729], {icon: redIcon}).addTo(myMap);
+
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
       // show only one world map
@@ -86,19 +85,19 @@
     }).addTo(myMap);
 
 
-  // function addPoints(data, tabletop) {
+  function addPoints(data, tabletop) {
 
-  //   // L.marker([data[0].latitude, data[0].longitude], {
-  //   //   icon: redIcon }).addTo(myMap);
+    // L.marker([data[0].latitude, data[0].longitude], {
+    //   icon: redIcon }).addTo(myMap);
 
-  //   for (var row in data) {
-  //     var marker = L.marker([
-  //       data[row].latitude,
-  //       data[row].longitude],  {
-  //     icon: redIcon }).addTo(myMap);
-  //     marker.bindPopup('<strong>' + data[row].school + '</strong>');
-  //   }
-  // }
+    for (var row in data) {
+      var marker = L.marker([
+        data[row].latitude,
+        data[row].longitude],  {
+      icon: redIcon }).addTo(myMap);
+      marker.bindPopup('<strong>' + data[row].school + '</strong>');
+    }
+  }
 </script>
 
 </html>
