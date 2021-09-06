@@ -25,19 +25,7 @@
       }
 
   
-      function addPoints(data) {
-
-// L.marker([data[0].latitude, data[0].longitude], {
-//   icon: redIcon }).addTo(myMap);
-
-for (var row in data) {
-  var marker = L.marker([
-    data[row].latitude,
-    data[row].longitude],  {
-  icon: redIcon }).addTo(myMap);
-  marker.bindPopup('<strong>' + data[row].school + '</strong>');
-}
-}
+      
 
   function showInfo(data, tabletop) {
     alert('Successfully processed!')
@@ -69,7 +57,6 @@ for (var row in data) {
 </style>
 
 <body>
-
   <div id="map"></div>
 </body>
 
@@ -100,7 +87,19 @@ for (var row in data) {
     }).addTo(myMap);
 
 
+    function addPoints(data) {
 
+// L.marker([data[0].latitude, data[0].longitude], {
+//   icon: redIcon }).addTo(myMap);
+
+for (var row in data) {
+  var marker = L.marker([
+    data[row].latitude,
+    data[row].longitude],  {
+  icon: redIcon }).addTo(myMap);
+  marker.bindPopup('<strong>' + data[row].school + '</strong>');
+}
+}
 </script>
 
 </html>
