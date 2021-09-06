@@ -17,7 +17,7 @@
     'https://docs.google.com/spreadsheets/d/1CtxXhLKZvm3czV1zh_A6UKescFI3U9OfLFsZ3kWAcqo/edit?usp=sharing';
 
     function init() {
-        Papa.parse(public_spreadsheet_url, {
+        Papa.parse(publicSpreadsheetUrl, {
           download: true,
           header: true,
           complete: addPoints
