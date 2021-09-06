@@ -88,6 +88,8 @@
     function addPoints(results) {
       var data = results.data
 
+      console.log(data[0].Latitude)
+
 // L.marker([data[0].latitude, data[0].longitude], {
 //   icon: redIcon }).addTo(myMap);
   // L.marker([-27.3604,152.9729], {icon: redIcon}).addTo(myMap);
@@ -100,11 +102,11 @@
 //   marker.bindPopup('<strong>' + data[row].school + '</strong>');
 // }
 
-L.marker([
--27.3604,
-152.9729],  {
-  icon: redIcon }).addTo(myMap);
-  // marker.bindPopup('<strong>' + data[row].school + '</strong>');
+// L.marker([
+// -27.3604,
+// 152.9729],  {
+//   icon: redIcon }).addTo(myMap);
+//   // marker.bindPopup('<strong>' + data[row].school + '</strong>');
 }
 </script>
 
