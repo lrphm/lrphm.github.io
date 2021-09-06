@@ -10,19 +10,34 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
 <script type='text/javascript'>
-  var publicSpreadsheetUrl =
-    'https://docs.google.com/spreadsheets/d/1CtxXhLKZvm3czV1zh_A6UKescFI3U9OfLFsZ3kWAcqo/edit?usp=sharing';
+  // var publicSpreadsheetUrl =
+  //   'https://docs.google.com/spreadsheets/d/1CtxXhLKZvm3czV1zh_A6UKescFI3U9OfLFsZ3kWAcqo/edit?usp=sharing';
+
+  // function init() {
+  //   Tabletop.init({
+  //     key: publicSpreadsheetUrl,
+  //      callback: addPoints,
+  //     simpleSheet: true
+  //   })
+  // }
 
   function init() {
-    Tabletop.init({
-      key: publicSpreadsheetUrl,
-       callback: addPoints,
-      simpleSheet: true
-    })
-  }
+          Papa.parse('https://docs.google.com/spreadsheets/d/1CtxXhLKZvm3czV1zh_A6UKescFI3U9OfLFsZ3kWAcqo/edit?usp=sharing', {
+          download: true,
+          header: true,
+          complete: function(results) {
+for (var row in data) {
+  var marker = L.marker([
+    data[row].latitude,
+    data[row].longitude],  {
+  icon: redIcon }).addTo(myMap);
+  marker.bindPopup('<strong>' + data[row].school + '</strong>');
+}
+          }
+        })
+window.addEventListener('DOMContentLoaded', init)
 
   function showInfo(data, tabletop) {
     alert('Successfully processed!')
@@ -85,18 +100,7 @@
     }).addTo(myMap);
 
 
-  function addPoints(data, tabletop) {
-
-    // L.marker([data[0].latitude, data[0].longitude], {
-    //   icon: redIcon }).addTo(myMap);
-
-    for (var row in data) {
-      var marker = L.marker([
-        data[row].latitude,
-        data[row].longitude],  {
-      icon: redIcon }).addTo(myMap);
-      marker.bindPopup('<strong>' + data[row].school + '</strong>');
-    }
+  
   }
 </script>
 
