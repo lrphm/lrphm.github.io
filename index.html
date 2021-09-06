@@ -14,7 +14,7 @@
 
 <script type='text/javascript'>
   var publicSpreadsheetUrl =
-  'https://docs.google.com/spreadsheets/d/e/2PACX-1vRB4E_6RnpLP1wWMjqcwsUvotNATB8Np3OntlXb7066ULcAHI9oqqRhucltFifPTYNd7DRNRE56oTdt/pub?output=csv'    
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vRFBdlaU6V8GQvDHzhOfn7assCHHOxELcLBA8ftZizy4uV-h-hKJo4ITDXyqkLMewR7k2cxIA1BSjcF/pub?gid=0&single=true&output=csv'    
   
   function init() {
     Papa.parse(publicSpreadsheetUrl, {
@@ -25,13 +25,6 @@
       }
       
       window.addEventListener('DOMContentLoaded', init)
-
-
-  // function showInfo(data) {
-  //   alert('Successfully processed!')
-  //   console.log(data);
-  //   console.log(data[0].latitude, data[0].longitude);
-  // }
 
 </script>
 
