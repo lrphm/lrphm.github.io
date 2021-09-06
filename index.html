@@ -72,6 +72,8 @@
   myMap.setMaxBounds(myMap.getBounds());
 
 
+  L.marker([-27.3604,152.9729], {icon: redIcon}).addTo(myMap);
+  
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
       // show only one world map
@@ -83,7 +85,6 @@
       id: "mapbox.streets"
     }).addTo(myMap);
 
-    L.marker([-27.3604,152.9729], {icon: redIcon}).addTo(myMap);
 
   // function addPoints(data, tabletop) {
 
