@@ -1,33 +1,114 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <p id="food"></p>
+<html lang="en">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
-    <script type="text/javascript">
-      var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRB4E_6RnpLP1wWMjqcwsUvotNATB8Np3OntlXb7066ULcAHI9oqqRhucltFifPTYNd7DRNRE56oTdt/pub?output=csv';
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ATN</title>
+</head>
 
-      function init() {
-        Papa.parse(public_spreadsheet_url, {
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+
+<script type='text/javascript'>
+  var publicSpreadsheetUrl =
+    'https://docs.google.com/spreadsheets/d/1CtxXhLKZvm3czV1zh_A6UKescFI3U9OfLFsZ3kWAcqo/edit?usp=sharing';
+
+    function init() {
+        Papa.parse(publicSpreadsheetUrl, {
           download: true,
           header: true,
-          complete: showInfo
+          complete: addPoints
         })
       }
-
+      
       window.addEventListener('DOMContentLoaded', init)
 
-      function showInfo(results) {
-        var data = results.data
 
-        // data comes through as a simple array since simpleSheet is turned on
-        alert("Successfully processed " + data.length + " rows!")
-        document.getElementById("food").innerHTML = "<strong>Foods:</strong> " + [ data[0].Name, data[1].Name, data[2].Name ].join(", ");
-        console.log(data);
-      }
+  // function showInfo(data) {
+  //   alert('Successfully processed!')
+  //   console.log(data);
+  //   console.log(data[0].latitude, data[0].longitude);
+  // }
 
-      document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");        
-    </script>
-    <p><strong>This example is only going to work if it's on the internet or on a local server!</strong> To run a local server, run "terminal" or "command prompt" and run the command <code>python -m http.server</code> or <code>python -m SimpleHTTPServer</code> (whichever one works, really, and you might even need to <a href="http://littlecolumns.com/tools/python-wrangler/">install Python</a>). Then visit <a href="http://localhost:8000/">http://localhost:8000</a> and you'll be all set.</p>
-  </body>
+</script>
+
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  html,
+  body,
+  #map {
+    height: 100vh;
+    width: 100%;
+  }
+
+  #map {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+</style>
+
+<body>
+  <div id="map"></div>
+</body>
+
+
+<script>
+  var redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    iconSize: [10, 16],
+    iconAnchor: [10, 16],
+  });
+
+  var myMap = L.map('map').setView([0, 0], 2);
+
+  myMap.setMaxBounds(myMap.getBounds());
+
+
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+      // show only one world map
+      noWrap: true,
+      minZoom: 2,
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      id: "mapbox.streets"
+    }).addTo(myMap);
+
+
+    function addPoints(results) {
+      var data = results.data
+
+      // alert("Successfully processed " + data.length + " rows!")
+      console.log(data)
+
+// L.marker([data[0].latitude, data[0].longitude], {
+//   icon: redIcon }).addTo(myMap);
+  // L.marker([-27.3604,152.9729], {icon: redIcon}).addTo(myMap);
+
+// for (var row in data) {
+//   var marker = L.marker([
+//     data[row].latitude,
+//     data[row].longitude],  {
+//   icon: redIcon }).addTo(myMap);
+//   marker.bindPopup('<strong>' + data[row].school + '</strong>');
+// }
+
+// L.marker([
+// -27.3604,
+// 152.9729],  {
+//   icon: redIcon }).addTo(myMap);
+//   // marker.bindPopup('<strong>' + data[row].school + '</strong>');
+}
+</script>
+
 </html>
