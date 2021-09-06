@@ -23,6 +23,7 @@
           complete: addPoints
         })
       }
+      
       window.addEventListener('DOMContentLoaded', init)
 
 
@@ -97,6 +98,11 @@
 //   icon: redIcon }).addTo(myMap);
 //   marker.bindPopup('<strong>' + data[row].school + '</strong>');
 // }
+L.marker([
+    data[0].latitude,
+    data[0].longitude],  {
+  icon: redIcon }).addTo(myMap);
+  // marker.bindPopup('<strong>' + data[row].school + '</strong>');
 }
 </script>
 
