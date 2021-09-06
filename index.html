@@ -14,8 +14,9 @@
 
 <script type='text/javascript'>
   var publicSpreadsheetUrl =
-  'https://docs.google.com/spreadsheets/d/1ZgzYgcg50OIhV7um2WvWPMDdBTs_5uhIJ7f8rtdJZS0/edit?usp=sharing'    function init() {
-       
+  'https://docs.google.com/spreadsheets/d/1ZgzYgcg50OIhV7um2WvWPMDdBTs_5uhIJ7f8rtdJZS0/edit?usp=sharing'    
+  
+  function init() {
     Papa.parse(publicSpreadsheetUrl, {
           download: true,
           header: true,
