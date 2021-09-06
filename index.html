@@ -37,13 +37,14 @@ for (var row in data) {
 }
           }
         })
+        
 window.addEventListener('DOMContentLoaded', init)
 
-  function showInfo(data, tabletop) {
-    alert('Successfully processed!')
-    console.log(data);
-    console.log(data[0].latitude, data[0].longitude);
-  }
+  // function showInfo(data, tabletop) {
+  //   alert('Successfully processed!')
+  //   console.log(data);
+  //   console.log(data[0].latitude, data[0].longitude);
+  // }
 
   window.addEventListener('DOMContentLoaded', init)
 </script>
@@ -98,9 +99,6 @@ window.addEventListener('DOMContentLoaded', init)
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       id: "mapbox.streets"
     }).addTo(myMap);
-
-
-  
   }
 </script>
 
